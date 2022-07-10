@@ -1,0 +1,32 @@
+- job:
+    block-downstream: false
+    block-upstream: false
+    builders:
+    - shell: |-
+        python --version
+        python3 test.py
+    concurrent: true
+    description: This job is managed through git. Do not edit this job through the
+      web!<!-- Managed by Jenkins Job Builder -->
+    disabled: false
+    display-name: AnixaneSeedJob
+    logrotate:
+      artifactDaysToKeep: '-1'
+      artifactNumToKeep: '-1'
+      daysToKeep: '3'
+      numToKeep: '20'
+    name: my-job
+    project-type: freestyle
+    publishers: []
+    quiet-period: '5'
+    retry-count: '3'
+    scm:
+    - git:
+        branches:
+        - main
+        git-tool: Default
+        name: origin
+        refspec: +refs/heads/*:refs/remotes/origin/*
+        url: https://github.com/anixane/jenkins_sample_job_repo
+        wipe-workspace: true
+    wrappers: []
